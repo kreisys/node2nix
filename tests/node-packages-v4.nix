@@ -919,13 +919,13 @@ let
         sha512 = "0by1djkn836sqd9pk2c777wcjvp34qbk1plx7s4lmykljrblpjc64dvn6ni2vyxsbyk33wnl6avym8vgw0ggr4226xakck8mw7y07cm";
       };
     };
-    "fsevents-1.1.2" = {
+    "fsevents-1.1.3" = {
       name = "fsevents";
       packageName = "fsevents";
-      version = "1.1.2";
+      version = "1.1.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/fsevents/-/fsevents-1.1.2.tgz";
-        sha512 = "25k3z64r4fhzjs1crh981lkkvkrhn2xv67k7y00zpnpsl571y5apg0r0kanddirms8kxf2xgf4yx9n2hzs9ml3v3p9qcnqhkh9khzja";
+        url = "https://registry.npmjs.org/fsevents/-/fsevents-1.1.3.tgz";
+        sha512 = "3jw51f4iayxvp9wfxczk1xgcvhsydhlgah64jmpl0mqiii2h8i5pp0lrqac5xn7296gxqrvy4lgm4k4hkifk8gipgqxd68x764gp2jq";
       };
     };
     "native-diff-match-patch-0.3.1" = {
@@ -1510,10 +1510,10 @@ in
   async = nodeEnv.buildNodePackage {
     name = "async";
     packageName = "async";
-    version = "2.5.0";
+    version = "2.6.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/async/-/async-2.5.0.tgz";
-      sha512 = "1ijrwmifg76a8wwhhfqxg23kd0rsjhzklwvj2czvqxs2k25ii6p3y6s3vhbcc5hnr87b0gfc4nb54b8bph2hn9c6z1f6nldjw04ksbv";
+      url = "https://registry.npmjs.org/async/-/async-2.6.0.tgz";
+      sha512 = "0zp4b5788400npi1ixjry5x3a4m21c8pnknk8v731rgnwnjbp5ijmfcf5ppmn1ap4a04md1s9dr8n9ygdvrmiai590v0k6dby1wc1y4";
     };
     dependencies = [
       sources."lodash-4.17.4"
@@ -1521,7 +1521,7 @@ in
     buildInputs = globalBuildInputs;
     meta = {
       description = "Higher-order functions and common patterns for asynchronous code";
-      homepage = "https://github.com/caolan/async#readme";
+      homepage = https://caolan.github.io/async/;
       license = "MIT";
     };
     production = true;
@@ -1956,8 +1956,8 @@ in
     version = "4.17.4";
     src = fetchgit {
       url = "git://github.com/lodash/lodash";
-      rev = "7c006f7445f55e137e0172c9856c29d3a79cfbc9";
-      sha256 = "b418f628baa87dd4c9bc0b856b82b6198cb871196fd7906b3ece846a48db7eb0";
+      rev = "8464b184b756c8dea0d361bd2f07670617118c47";
+      sha256 = "32b0d380f7cf5e4db15e73e98ce182ad79c52b506707b3f420b8710d1c15dfab";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -2225,7 +2225,7 @@ in
           sources."uuid-3.1.0"
         ];
       })
-      (sources."fsevents-1.1.2" // {
+      (sources."fsevents-1.1.3" // {
         dependencies = [
           sources."nan-2.7.0"
         ];
