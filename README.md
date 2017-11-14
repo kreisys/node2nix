@@ -258,14 +258,12 @@ filenames can be modified with command-line options:
 $ node2nix --input package.json --output registry.nix --composition default.nix --node-env node-env.nix
 ```
 
-Using alternative NPM registries
---------------------------------
-You can also use an alternative NPM registry (such as a private one), by adding
-the `--registry` option:
+Using alternative NPM registries and/or private contexts
+--------------------------------------------------------
+Use `/etc/npmrc`, `~/.npmrc` or a project-specific `.npmrc` to define custom
+registries or authTokens for specific contexts or packages.
 
-```bash
-$ node2nix -i node-packages.json --registry http://private.registry.local
-```
+More information [here](https://docs.npmjs.com/files/npmrc) and [here](http://blog.npmjs.org/post/118393368555/deploying-with-npm-private-modules).
 
 Adding unspecified dependencies
 -------------------------------
