@@ -242,14 +242,23 @@ let
         export HOME=$TMPDIR
         cd "${packageName}"
         runHook preRebuild
-        npm --registry http://www.example.com --nodedir=${nodeSources} ${npmFlags} ${stdenv.lib.optionalString production "--production"} rebuild
+
+        npm() {
+            command npm --registry http://www.example.com --nodedir=${nodeSources} ${npmFlags} ${stdenv.lib.optionalString production "--production"} "$@"
+        }
+
+        # We have to run rebuild with --ignore-scripts first in order to make sure all .bin links are created prior to actually attempting rebuild.
+        # This specifically caused a problem with bcrypt trying to use node-pre-gyp before it's available. I *think* it should be considered a bug with npm,
+        # but for now this workaround will have to do.
+        npm rebuild --ignore-scripts
+        npm rebuild
 
         if [ "$dontNpmInstall" != "1" ]
         then
             # NPM tries to download packages even when they already exist if npm-shrinkwrap is used.
-            rm -f npm-shrinkwrap.json
+            rm -f npm-shrinkwrap.json package-lock.json
 
-            npm --registry http://www.example.com --nodedir=${nodeSources} ${npmFlags} ${stdenv.lib.optionalString production "--production"} install
+            npm install
         fi
 
         # Create symlink to the deployed executable folder, if applicable
